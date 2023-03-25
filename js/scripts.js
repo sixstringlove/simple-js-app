@@ -5,5 +5,18 @@ let pokemonList = [{name:'Charizard', height:'1.7', type:['Fire, Flying']},
                     {name:'Aerodactyl', height:'1.8', type: ['Rock, Flying']},
                 ]
                 
+// loop pokemon display with name and height
+for (let i=0; i < pokemonList.length; i++) {
+    pokemonData = `<p>${pokemonList[i].name}, (height: ${ + pokemonList[i].height})`;
+
+//conditional for height
+    if (pokemonList [i].height > 1.7) {
+        pokemonData += ' Wow! Thats a big pokemon' 
+    }
+    pokemonData += '</p>';
+
+    document.write (pokemonData);
+     
+}
 
 
