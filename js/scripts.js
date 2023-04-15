@@ -1,14 +1,11 @@
 
-
+let pokemonRepository = (function() {
 let pokemonList = [{name:'Charizard', height:'1.7', type:['Fire, Flying']},
                     {name:'Ninetails', height:'1.1', type:['Fire']},
                     {name:'Kingler', height:'1.3', type:['Water']},
                     {name:'Zapdos', height:'1.6', type: ['Electric, Flying']},
                     {name:'Aerodactyl', height:'1.8', type: ['Rock, Flying']}, 
   ]
-
-  let pokemonRepository = (function() {
-    let pokemonList = [];
 
   function getAll() {
     return pokemonList;
@@ -27,7 +24,7 @@ let pokemonList = [{name:'Charizard', height:'1.7', type:['Fire, Flying']},
         console.log("Invalid Object");
       } 
   }
-
+  //create pokemon list w butttons labelled w name
   function addListItem(pokemon){
 
       let pokemonList = document.querySelector(".pokemon-list");
@@ -37,10 +34,14 @@ let pokemonList = [{name:'Charizard', height:'1.7', type:['Fire, Flying']},
       button.classList.add("button-class");
       listpokemon.appendChild(button);
       pokemonList.appendChild(listpokemon);
-
+      //add event listen to show details of pokemon
       button.addEventListener('click',function () {
         showDetails(pokemon);
       });
+  }
+  //console log result of button click
+  function showDetails(pokemon) {
+    console.log(pokemon)
   }
 
   return {
