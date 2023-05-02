@@ -31,7 +31,7 @@ let pokemonRepository = (function() {
 
       let button = document.createElement("button");
       button.innerText = (pokemon.name);
-      button.classList.add("button-class");
+      button.classList.add("pokemonButton");
       listItem.appendChild(button);
       pokemonListItem.appendChild(listItem);
       //add event listen to show details of pokemon
@@ -90,19 +90,22 @@ let pokemonRepository = (function() {
   function showModal (pokemon) {
     pokemonRepository.loadDetails (pokemon)
     .then(function () {
-        //clear image container
-      let imageContainer = document.querySelector(".image-container");
-      imageContainer.innerHTML = "";
-      imageContainer.appendChild(pokemonImage);
-
         //add name as modal title
-      let modalTitle = document.querySelector(".modal-title");
-      modalTitle.innerText = pokemon.name;
+        let modalTitle = document.querySelector(".modal-title");
+        modalTitle.innerText = pokemon.name;
 
-        //create an element
+        //create image container
+      let imageContainer = document.querySelector(".image-container");
+    
+   
+        //create an element for image
       let pokemonImage = document.createElement("img");
       pokemonImage.src = pokemon.imageUrl;
       pokemonImage.classList.add("pokemon-image");
+
+        //clear and append
+      imageContainer.innerHTML = "";
+      imageContainer.appendChild(pokemonImage);
 
         //add height
       let pokemonHeight = document.querySelector(".height");
@@ -122,7 +125,7 @@ let pokemonRepository = (function() {
       let modalCloseButton = document.createElement("button");
       modalCloseButton.classList.add("modal-close");
       modalCloseButton.innerText = "x";
-      modalCloseButton.classList.add("btn");
+      modalCloseButton.classList.add("button");
 
       modalCloseButton.addEventListener("click", function () {
         closeModal ();
