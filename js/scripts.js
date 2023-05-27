@@ -10,12 +10,9 @@ let pokemonRepository = (function() {
   }
               
 //restrict add to an object
-  function add(pokemon) {
-    if (
-      typeof pokemon ==="object" &&
-      "name" in pokemon  
-      ) {
-      pokemonList.push(pokemon);
+  function add(pokemon) { 
+    if (typeof pokemon ==="object" && "name" in pokemon && "detailsUrl" in pokemon) 
+      { return pokemonList.push(pokemon);
       } else {
         console.log("Invalid Object");
       } 
@@ -46,7 +43,7 @@ let pokemonRepository = (function() {
       return response.json();
       })
       .then(function (json) {
-      //call results with namme and url
+      //call results with name and url
       json.results.forEach(function (item) {
         let pokemon = {
           name: item.name,
@@ -67,6 +64,8 @@ let pokemonRepository = (function() {
       return response.json();
     })
       .then(function (details) {
+        console.log(details);
+
     //add details for item
       item.imageUrl = details.sprites.font_default;
       item.height = details.height;
@@ -82,8 +81,8 @@ let pokemonRepository = (function() {
   // result of button click
   function showDetails(pokemon) {
     loadDetails(pokemon)
-    .then(function () {
-      showModal (pokemon);
+      .then(function () {
+        showModal (pokemon);
     });
   }
 
@@ -95,20 +94,20 @@ let pokemonRepository = (function() {
         modalTitle.innerText = pokemon.name;
 
         //create image container
-      let imageContainer = document.querySelector(".image-container");
+        let imageContainer = document.querySelector(".image-container");
     
    
         //create an element for image
-      let pokemonImage = document.createElement("img");
-      pokemonImage.src = pokemon.imageUrl;
-      pokemonImage.classList.add("pokemon-image");
+        let pokemonImage = document.createElement("img");
+        pokemonImage.src = pokemon.imageUrl;
+        pokemonImage.classList.add("pokemon-image");
 
         //clear and append
-      imageContainer.innerHTML = "";
-      imageContainer.appendChild(pokemonImage);
+        imageContainer.innerHTML = "";
+        imageContainer.appendChild(pokemonImage);
 
         //add height
-      let pokemonHeight = document.querySelector(".height");
+        let pokemonHeight = document.querySelector(".height");
       pokemonHeight.innerText = "Height:  " +  pokemon.height;
 
         //add class for modal to open or close
