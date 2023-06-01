@@ -4,7 +4,6 @@ let pokemonRepository = (function() {
   //api for pokemon list
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
-
   function getAll() {
     return pokemonList;
   }
@@ -14,9 +13,10 @@ let pokemonRepository = (function() {
     if (typeof pokemon ==="object" && "name" in pokemon && "detailsUrl" in pokemon) 
       { return pokemonList.push(pokemon);
       } else {
-        console.log("Invalid Object");
+        //console.log("Invalid Object");
       } 
   }
+
   //create pokemon list w butttons labelled w name
   function addListItem(pokemon) {
 
@@ -37,7 +37,7 @@ let pokemonRepository = (function() {
       });
   }
 //promise
-  function loadList() {
+    function loadList() {
     return fetch(apiUrl)
       .then (function (response) {
       return response.json();
@@ -51,13 +51,13 @@ let pokemonRepository = (function() {
         };
         add(pokemon);
       });
-
-    }).catch(function (e) {
+    })
+      .catch(function (e) {
       console.error(e);
     });
   }
-
-  function loadDetails(item) {
+ 
+   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
@@ -67,7 +67,7 @@ let pokemonRepository = (function() {
         console.log(details);
 
     //add details for item
-      item.imageUrl = details.sprites.font_default;
+      item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
     })
@@ -87,8 +87,7 @@ let pokemonRepository = (function() {
   }
 
   function showModal (pokemon) {
-    pokemonRepository.loadDetails (pokemon)
-    .then(function () {
+    
         //add name as modal title
         let modalTitle = document.querySelector(".modal-title");
         modalTitle.innerText = pokemon.name;
@@ -129,7 +128,6 @@ let pokemonRepository = (function() {
       modalCloseButton.addEventListener("click", function () {
         closeModal ();
       });
-    });
 
     function closeModal() {
       let modalContainer = document.querySelector("#modal-container");
@@ -149,23 +147,10 @@ let pokemonRepository = (function() {
   };
 })();
 
-
-pokemonRepository.loadList().then(function() {
+ 
+ pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-
-      
-      
-
-
-
-
-  
-
-  
-
-
-
+ 
