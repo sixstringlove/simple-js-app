@@ -110,28 +110,28 @@ let pokemonRepository = (function() {
       pokemonHeight.innerText = "Height:  " +  pokemon.height;
 
         //add class for modal to open or close
-      let modal = document.querySelector(".modal");
-      modal.classList.add("modal-is-visible");
-      modal.classList.remove("modal");
+      let modalContainer = document.querySelector("#modal-container");
+      modalContainer.classList.add("modal-is-visible");
+      modalContainer.classList.remove("modal");
 
-        //button container
+         //button container
       let buttonContainer = document.querySelector("#button-container");
       buttonContainer.innerHTML = "";
       buttonContainer.appendChild(modalCloseButton);
-
+ 
           //element for close button
       let modalCloseButton = document.createElement("button");
       modalCloseButton.classList.add("modal-close");
       modalCloseButton.innerText = "x";
       modalCloseButton.classList.add("button");
       modalCloseButton.addEventListener("click", function () {
-        closeModal ();
+        closeModal();
     });
   }
   
   function closeModal() {
     let modalContainer = document.querySelector("#modal-container");
-    modalContainer.classList.add("modal");
+    modalContainer.classList.add("modal-container");
     modalContainer.classList.remove("modal-is-visible");   
   }
    
