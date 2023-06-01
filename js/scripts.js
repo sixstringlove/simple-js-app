@@ -134,7 +134,7 @@ let pokemonRepository = (function() {
     modalContainer.classList.add("modal");
     modalContainer.classList.remove("modal-is-visible");   
   }
-  
+   
   return {
     add: add,
     getAll: getAll,
