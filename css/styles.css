@@ -15,6 +15,7 @@
     width: 10%;
     padding: 20px;
 }
+
 .page-header__item  {
     flex: 0 1 200px;
     max-height: 150px;
@@ -46,14 +47,14 @@ body {
     background-color: white;
     color: black;
     border: 2px solid #4caf50;
-  }
+}
 
-  /*#modal-container {
+.modal-container {
     display: none;
-  }*/
+}
 
 
-  #modal-is-visible {
+.modal-is-visible {
     position: fixed;
     padding: 20px;
     box-sizing: border-box;
@@ -66,7 +67,7 @@ body {
     overflow: auto;
     display: grid;
     text-align: center;
-}
+} 
 
 .image-container {
     float: left;
