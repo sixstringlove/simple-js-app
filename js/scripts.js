@@ -119,23 +119,22 @@ let pokemonRepository = (function() {
       buttonContainer.innerHTML = "";
       buttonContainer.appendChild(modalCloseButton);
 
-        //element for close button
+          //element for close button
       let modalCloseButton = document.createElement("button");
       modalCloseButton.classList.add("modal-close");
       modalCloseButton.innerText = "x";
       modalCloseButton.classList.add("button");
-
       modalCloseButton.addEventListener("click", function () {
         closeModal ();
-      });
-
-    function closeModal() {
-      let modalContainer = document.querySelector("#modal-container");
-      modalContainer.classList.add("modal");
-      modalContainer.classList.remove("modal-is-visible");
-    }
+    });
   }
-
+  
+  function closeModal() {
+    let modalContainer = document.querySelector("#modal-container");
+    modalContainer.classList.add("modal");
+    modalContainer.classList.remove("modal-is-visible");   
+  }
+  
   return {
     add: add,
     getAll: getAll,
